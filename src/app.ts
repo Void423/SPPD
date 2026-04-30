@@ -4,10 +4,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/ping", (req, res) => {
-  res.status(200).json({
-    message: "Hello Worlds",
-    status: "success",
-  });
+app.get("/", (req, res) => {
+   res.send("Hello World");
 });
 export default app;
