@@ -1,10 +1,33 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  index,
+  varchar,
+  pgEnum,
+} from "drizzle-orm/pg-core";
 
+// data enum
+const roleEnum = pgEnum("role", ["admin", "karyawan"]);
+const positionEnum = pgEnum("position", [
+  "tendik",
+  "guruKelas",
+  "guruBidangStudi",
+  "kepsek",
+  "cleaningServices",
+  " penjagaSekolah",
+]);
+// table
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
+  nip: varchar({ length: 255 }).notNull().unique(),
+  rank: varchar({ length: 255 }).notNull(),
+  role: roleEnum("role").default("karyawan"),
+  position: positionEnum("position"),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
