@@ -9,4 +9,12 @@ export const auth = betterAuth({
     provider: "pg",
   }),
   emailAndPassword: { enabled: true },
+  user: {
+    additionalFields: {
+      nip: { type: "string" },
+      rank: { type: "string" },
+      role: { type: "string" },
+      position: { type: "string" },
+    },
+  },
 });
