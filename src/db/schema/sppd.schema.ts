@@ -7,8 +7,10 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import { user } from "./auth.schema";
+import { createInsertSchema, createUpdateSchema } from "drizzle-zod";
+import z from "zod";
 
-export const sppd = pgTable("sppd", {
+export const sppdTable = pgTable("sppd", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   employeeId: integer("employeeId").references(() => user.id),
   purpose: text().notNull(),
@@ -24,3 +26,18 @@ export const sppd = pgTable("sppd", {
     .$onUpdate(() => new Date())
     .notNull(),
 });
+
+export const sppdInsertSchema = createInsertSchema(sppdTable).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const sppdUpdateSchema = createUpdateSchema(sppdTable).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type sppdInput = z.infer<typeof sppdInsertSchema>;
+export type sppdUpdate = z.infer<typeof sppdUpdateSchema>;

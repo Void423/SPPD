@@ -1,3 +1,0 @@
-class AuthService {
-  async register() {}
-}

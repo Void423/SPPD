@@ -1,0 +1,2 @@
+CREATE TYPE "public"."position" AS ENUM('tendik', 'guruKelas', 'guruBidangStudi', 'kepsek', 'cleaningServices', ' penjagaSekolah');--> statement-breakpoint
+CREATE TYPE "public"."role" AS ENUM('admin', 'karyawan');
