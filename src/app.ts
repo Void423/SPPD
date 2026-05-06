@@ -6,16 +6,16 @@ import router from "./route/index.route";
 
 const app: Application = express();
 
+app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
-
-app.all("/api/auth/*splat", toNodeHandler(auth));
 
 // ROUTE
 app.use("/api", router);

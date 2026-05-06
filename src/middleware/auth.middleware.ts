@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { auth } from "../lib/auth";
 import { fromNodeHeaders } from "better-auth/node";
 
 export async function requireAuth(
-  res: Response,
   req: Request,
+  res: Response,
   next: NextFunction,
 ) {
   const session = auth.api.getSession({
@@ -17,4 +17,5 @@ export async function requireAuth(
     });
     return;
   }
+  next();
 }
