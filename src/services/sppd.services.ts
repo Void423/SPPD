@@ -4,7 +4,7 @@ import { sppdInput, sppdTable, sppdUpdate } from "../db/schema/sppd.schema";
 
 export class SppdServices {
   constructor() {}
-  async getAllServices() {
+  async getAllSppd() {
     return await db.select().from(sppdTable);
   }
 

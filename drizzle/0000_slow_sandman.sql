@@ -1,3 +1,5 @@
+CREATE TYPE "public"."position" AS ENUM('tendik', 'guruKelas', 'guruBidangStudi', 'kepsek', 'cleaningServices', ' penjagaSekolah');--> statement-breakpoint
+CREATE TYPE "public"."role" AS ENUM('admin', 'karyawan');--> statement-breakpoint
 CREATE TABLE "account" (
 	"id" text PRIMARY KEY NOT NULL,
 	"account_id" text NOT NULL,
