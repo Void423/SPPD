@@ -7,7 +7,7 @@ export async function requireAuth(
   res: Response,
   next: NextFunction,
 ) {
-  const session = auth.api.getSession({
+  const session = await auth.api.getSession({
     headers: fromNodeHeaders(req.headers),
   });
 
