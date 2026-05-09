@@ -13,8 +13,9 @@ import z from "zod";
 export const sppdTable = pgTable("sppd", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   employeeId: text("employeeId").references(() => user.id, {
-    onDelete: "cascade",
+    onDelete: "restrict",
   }),
+  sppdNumber: varchar("sppdNumber").notNull(),
   purpose: text().notNull(),
   transport: varchar("transport").notNull(),
   depart: varchar("depart").notNull(),
