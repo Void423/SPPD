@@ -29,6 +29,27 @@
       "when": 1778249336112,
       "tag": "0003_ancient_blur",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1778408027621,
+      "tag": "0004_sparkling_angel",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1778409092962,
+      "tag": "0005_low_roland_deschain",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1778423058465,
+      "tag": "0006_lyrical_gamma_corps",
+      "breakpoints": true
     }
   ]
 }

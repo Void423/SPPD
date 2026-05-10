@@ -1,6 +1,7 @@
 import {
   date,
   integer,
+  pgEnum,
   pgTable,
   text,
   timestamp,
@@ -10,12 +11,16 @@ import { user } from "./auth.schema";
 import { createInsertSchema, createUpdateSchema } from "drizzle-zod";
 import z from "zod";
 
+
+// enum
+export const approved = pgEnum("approved", ["pending", "approved", "rejected"]);
+
 export const sppdTable = pgTable("sppd", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
   employeeId: text("employeeId").references(() => user.id, {
     onDelete: "restrict",
   }),
-  sppdNumber: varchar("sppdNumber").notNull(),
+  sppdNumber: varchar("sppdNumber").notNull().unique(),
   purpose: text().notNull(),
   transport: varchar("transport").notNull(),
   depart: varchar("depart").notNull(),
@@ -23,6 +28,7 @@ export const sppdTable = pgTable("sppd", {
   day: varchar("day").notNull(),
   departureDate: date("departureDate").notNull(),
   returnDate: date("returnDate").notNull(),
+  approved: approved("approved").default("pending"),
   createdAt: timestamp().defaultNow(),
   updatedAt: timestamp()
     .defaultNow()

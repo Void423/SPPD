@@ -8,7 +8,8 @@
     "db:migrate": "bunx drizzle-kit migrate",
     "db:push": "bunx drizzle-kit push",
     "db:generate": "bunx drizzle-kit generate",
-    "db:pull": "bunx drizzle-kit pull"
+    "db:pull": "bunx drizzle-kit pull",
+    "db:reset": "bun run ./src/lib/reset.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

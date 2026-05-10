@@ -1,0 +1,1 @@
+ALTER TABLE "sppd" ALTER COLUMN "sppdNumber" DROP NOT NULL;
