@@ -50,7 +50,7 @@ export class SppdController {
 
       res.status(200).json({
         message: "Sppd retrieved successfully",
-        data: sppd[0],
+        data: sppd,
       });
     } catch (error) {
       next(error);
@@ -72,7 +72,7 @@ export class SppdController {
       if (!parsed.success) {
         res.status(400).json({
           message: "Validation failed",
-          errors: parsed.error.issues[0]
+          errors: parsed.error.issues[0],
         });
         return;
       }

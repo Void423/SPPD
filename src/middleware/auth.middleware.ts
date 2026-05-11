@@ -19,3 +19,26 @@ export async function requireAuth(
   }
   next();
 }
+
+export async function requireRole(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  const session = await auth.api.getSession({
+    headers: fromNodeHeaders(req.headers),
+  });
+
+  if (!session) {
+    return res.status(403).json({
+      message: "Unauthorized",
+    });
+  }
+
+  if (session.user.role !== "admin") {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+  next();
+}
