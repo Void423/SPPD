@@ -1,7 +1,6 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { sppdInput, sppdTable, sppdUpdate } from "../db/schema/sppd.schema";
-import { user } from "../db/schema/auth.schema";
 
 export class SppdServices {
   constructor() { }
@@ -21,6 +20,13 @@ export class SppdServices {
       .select()
       .from(sppdTable)
       .where(eq(sppdTable.id, id));
+  }
+
+  async getSppdByEmployeeId(id: string) {
+    return await db
+      .select()
+      .from(sppdTable)
+      .where(eq(sppdTable.employeeId, id));
   }
 
   /**

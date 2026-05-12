@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { SppdServices } from "../services/sppd.services";
 import { sppdInsertSchema, sppdUpdateSchema } from "../db/schema/sppd.schema";
+import { auth } from "../lib/auth";
+import { fromNodeHeaders } from "better-auth/node";
 
 export class SppdController {
   constructor(private readonly sppdServices: SppdServices) {
@@ -16,9 +18,29 @@ export class SppdController {
    * @description Mengambil seluruh data SPPD dari database.
    * @returns {200} Array of SPPD objects
    */
-  async getAllSppd(_req: Request, res: Response, next: NextFunction) {
+  async getAllSppd(req: Request, res: Response, next: NextFunction) {
     try {
-      const sppd = await this.sppdServices.getAllSppd();
+      const session = await auth.api.getSession({
+        headers: fromNodeHeaders(req.headers)
+      })
+      if (!session?.user) {
+        res.status(401).json({ message: "Unauthorized" });
+        return;
+      }
+
+      const { id, role } = session.user
+      console.log(id, role);
+      const sppd =
+        role === "karyawan"
+          ? await this.sppdServices.getSppdByEmployeeId(id)
+          : await this.sppdServices.getAllSppd();
+      if (!sppd || sppd.length === 0) {
+        res.status(404).json({
+          message: `Sppd not found`,
+        });
+        return;
+      }
+
       res.status(200).json({
         message: "Sppd retrieved successfully",
         data: sppd,
