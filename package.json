@@ -3,14 +3,6 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
-  "scripts": {
-    "dev": "bun run --watch ./src/server.ts",
-    "db:migrate": "bunx drizzle-kit migrate",
-    "db:push": "bunx drizzle-kit push",
-    "db:generate": "bunx drizzle-kit generate",
-    "db:pull": "bunx drizzle-kit pull",
-    "db:reset": "bun run ./src/lib/reset.ts"
-  },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
@@ -22,13 +14,11 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "better-auth": "^1.6.9",
+    "better-auth": "^1.6.11",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "drizzle-orm": "^0.45.2",
-    "drizzle-zod": "^0.8.3",
+    "drizzle": "^1.4.0",
     "express": "^5.2.1",
-    "pg": "^8.20.0",
-    "zod": "^4.4.1"
+    "pg": "^8.20.0"
   }
 }
