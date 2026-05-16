@@ -9,6 +9,25 @@ export const auth = betterAuth({
   advanced: {
     disableCSRFCheck: true
   },
+  user: {
+    additionalFields: {
+      nip: {
+        type: "string",
+        notNull: true,
+        unique: true,
+      },
+      role: {
+        type: "string",
+        notNull: true,
+        default: "karyawan",
+      },
+      position: {
+        type: "string",
+        notNull: true,
+        default: "staff",
+      },
+    }
+  },
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,

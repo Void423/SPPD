@@ -22,6 +22,20 @@
       "when": 1778943619442,
       "tag": "0002_nostalgic_layla_miller",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1778944710049,
+      "tag": "0003_glorious_skin",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1778946667725,
+      "tag": "0004_careless_rachel_grey",
+      "breakpoints": true
     }
   ]
 }

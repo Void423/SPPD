@@ -1,10 +1,18 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, pgEnum, varchar } from "drizzle-orm/pg-core";
+
+
+export const roleKaryawan = pgEnum("role_karyawan", ["admin", "karyawan"])
+export const status = pgEnum("status", ["pending", "approved", "rejected"])
+export const position_karyawan = pgEnum("position_karyawan", ["staff", "guru", "kepala sekolah"])
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
+  nip: varchar("nip").notNull().unique(),
+  role: roleKaryawan("role").notNull(),
+  position: position_karyawan("position").notNull(),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
