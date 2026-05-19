@@ -36,6 +36,20 @@
       "when": 1778946667725,
       "tag": "0004_careless_rachel_grey",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1779114340864,
+      "tag": "0005_classy_logan",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1779153161725,
+      "tag": "0006_hot_tarot",
+      "breakpoints": true
     }
   ]
 }
